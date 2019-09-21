@@ -38,7 +38,7 @@ var (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "kubectl-modify-secret",
-	Short: "kubectl-modify-secrets allows user to directly modify the secret without worrying about base64 encoding/decoding",
+	Short: "kubectl-modify-secret allows user to directly modify the secret without worrying about base64 encoding/decoding",
 	Run: func(cmd *cobra.Command, args []string) {
 		if debug {
 			logrus.SetLevel(logrus.DebugLevel)
