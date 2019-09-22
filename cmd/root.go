@@ -100,7 +100,6 @@ func modify(kubeclient *kubernetes.Clientset, name, namespace string) error {
 		return err
 	}
 
-	logrus.Info(string(yamlData))
 	err = ioutil.WriteFile(tempfile.Name(), yamlData, 0644)
 	if err != nil {
 		return err
