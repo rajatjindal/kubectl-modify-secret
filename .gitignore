@@ -12,3 +12,4 @@
 *.out
 kubectl-modify-secret
 *.swp
+_dist/
