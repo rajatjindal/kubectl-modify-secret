@@ -33,13 +33,22 @@ var (
 	namespace      string
 	kubeconfigFile string
 	debug          bool
+	printVersion   bool
 )
+
+// Version is set during build time
+var Version = "unknown"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "kubectl-modify-secret",
 	Short: "kubectl-modify-secret allows user to directly modify the secret without worrying about base64 encoding/decoding",
 	Run: func(cmd *cobra.Command, args []string) {
+		if printVersion {
+			fmt.Println(Version)
+			os.Exit(0)
+		}
+
 		if debug {
 			logrus.SetLevel(logrus.DebugLevel)
 		}
@@ -76,6 +85,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&namespace, "namespace", "n", "", "namespace of the secret")
 	rootCmd.Flags().StringVar(&kubeconfigFile, clientcmd.RecommendedConfigPathFlag, "", "kubeconfig file")
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "print debug logs")
+	rootCmd.Flags().BoolVar(&printVersion, "version", false, "print version of kubectl-modify-binary")
 }
 
 func modify(kubeclient *kubernetes.Clientset, name, namespace string) error {
