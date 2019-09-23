@@ -1,4 +1,4 @@
-// Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2019 Rajat Jindal <rajatjindal83@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,8 +14,16 @@
 
 package main
 
-import "github.com/rajatjindal/kubectl-modify-secret/cmd"
+import (
+	"os"
+
+	"github.com/rajatjindal/kubectl-modify-secret/pkg/cmd"
+	"k8s.io/cli-runtime/pkg/genericclioptions"
+)
 
 func main() {
-	cmd.Execute()
+	root := cmd.NewCmdModifySecret(genericclioptions.IOStreams{In: os.Stdin, Out: os.Stdout, ErrOut: os.Stderr})
+	if err := root.Execute(); err != nil {
+		os.Exit(1)
+	}
 }

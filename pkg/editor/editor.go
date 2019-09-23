@@ -1,16 +1,17 @@
 package editor
 
 import (
-	"errors"
 	"os"
 	"os/exec"
 )
+
+const defaultEditor = "vi"
 
 //Edit opens the editor
 func Edit(file string) error {
 	editorFromEnv := os.Getenv("EDITOR")
 	if editorFromEnv == "" {
-		return errors.New("ENV variable $EDITOR not set")
+		editorFromEnv = defaultEditor
 	}
 
 	cmd := exec.Command(editorFromEnv, file)
