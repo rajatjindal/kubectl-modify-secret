@@ -89,11 +89,7 @@ func (o *ModifySecretOptions) Complete(cmd *cobra.Command, args []string) error 
 		return err
 	}
 
-	o.namespace, err = cmd.Flags().GetString("namespace")
-	if err != nil {
-		return err
-	}
-
+	o.namespace = getNamespace(o.configFlags)
 	return nil
 }
 
@@ -169,4 +165,13 @@ func (o *ModifySecretOptions) Run() error {
 	logrus.Infof("secret %q edited", o.secretName)
 
 	return nil
+}
+
+// getNamespace takes a set of kubectl flag values and returns the namespace we should be operating in
+func getNamespace(flags *genericclioptions.ConfigFlags) string {
+	namespace, _, err := flags.ToRawKubeConfigLoader().Namespace()
+	if err != nil || len(namespace) == 0 {
+		namespace = "default"
+	}
+	return namespace
 }
