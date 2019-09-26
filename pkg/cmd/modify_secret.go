@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"crypto/md5"
 	"github.com/Sirupsen/logrus"
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/editor"
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/secrets"
@@ -134,6 +135,8 @@ func (o *ModifySecretOptions) Run() error {
 		return err
 	}
 
+	originalSum := md5.Sum(yamlData)
+
 	err = editor.Edit(tempfile.Name())
 	if err != nil {
 		return err
@@ -142,6 +145,13 @@ func (o *ModifySecretOptions) Run() error {
 	readData, err := ioutil.ReadFile(tempfile.Name())
 	if err != nil {
 		return err
+	}
+
+	finalSum := md5.Sum(readData)
+
+	if originalSum == finalSum {
+		logrus.Infof("no changes done to secret %q", o.secretName)
+		return nil
 	}
 
 	var updateData map[string]string
