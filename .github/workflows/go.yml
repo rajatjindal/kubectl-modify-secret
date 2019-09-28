@@ -19,7 +19,12 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+        path: go/src/github.com/rajatjindal/kubectl-modify-secret
 
     - name: Run tests
       run: |
         go test ./... -cover
+      env:
+        GOPATH: /home/runner/work/kubectl-modify-secret/go
