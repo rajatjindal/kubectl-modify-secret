@@ -1,0 +1,23 @@
+name: main
+
+on: 
+  release: 
+    types: ["published", "edited"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1 
+      - name: Open PR for new release of Krew Plugin
+        id: hello
+        uses: rajatjindal/krew-plugin-release@v0.0.12
+        with:
+          plugin-name: 'modify-secret'
+          upstream-krew-index-owner: 'rajatjin'
+        env:
+          KREW_PLUGIN_RELEASE_TOKEN: ${{ secrets. KREW_PLUGIN_RELEASE_TOKEN }}
+
+
+
