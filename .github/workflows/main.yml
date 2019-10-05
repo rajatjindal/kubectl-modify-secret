@@ -14,7 +14,7 @@ jobs:
         uses: rajatjindal/krew-plugin-release@v0.0.22
         with:
           plugin-name: 'modify-secret'
-          upstream-krew-index-owner: 'rajatjin'
+          upstream-krew-index-owner: 'kubernetes-sigs'
         env:
           KREW_PLUGIN_RELEASE_TOKEN: ${{ secrets.KREW_PLUGIN_RELEASE_TOKEN }}
 
