@@ -17,7 +17,7 @@ jobs:
           plugin-name: 'modify-secret'
           upstream-krew-index-owner: 'rajatjin'
         env:
-          KREW_PLUGIN_RELEASE_TOKEN: ${{ secrets. KREW_PLUGIN_RELEASE_TOKEN }}
+          KREW_PLUGIN_RELEASE_TOKEN: ${{ secrets.KREW_PLUGIN_RELEASE_TOKEN }}
 
 
 
