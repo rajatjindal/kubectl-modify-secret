@@ -11,10 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1 
       - name: Open PR for new release of Krew Plugin
-        uses: rajatjindal/krew-plugin-release@v0.0.22
+        uses: rajatjindal/krew-plugin-release@v0.0.24
         with:
           plugin-name: 'modify-secret'
-          upstream-krew-index-owner: 'kubernetes-sigs'
+          upstream-krew-index-owner: 'rajatjin'
         env:
           KREW_PLUGIN_RELEASE_TOKEN: ${{ secrets.KREW_PLUGIN_RELEASE_TOKEN }}
 
