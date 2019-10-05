@@ -1,6 +1,8 @@
 name: main
 
-on: ["push"]
+on: 
+  release: 
+    types: ["published"]
 
 jobs:
   build:
