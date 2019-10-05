@@ -1,7 +1,8 @@
 name: main
 
 on: 
-  release: ["published"]
+  release: 
+    types: ["published"]
 
 jobs:
   build:
