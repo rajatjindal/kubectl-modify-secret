@@ -1,8 +1,6 @@
 name: main
 
-on: 
-  release: 
-    types: ["published", "edited"]
+on: ["push"]
 
 jobs:
   build:
