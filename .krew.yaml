@@ -1,0 +1,41 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: modify-secret
+spec:
+  version: "{{ .TagName }}"
+  platforms:
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/darwin-amd64-{{ .TagName }}.tar.gz" .TagName }}
+    files:
+    - from: "*"
+      to: "."
+    bin: kubectl-modify-secret
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/linux-amd64-{{ .TagName }}.tar.gz" .TagName }}
+    files:
+    - from: "*"
+      to: "."
+    bin: kubectl-modify-secret
+  shortDescription: modify secret with implicit base64 translations
+  caveats: |
+    Usage:
+      kubectl modify-secret secret-name -n kube-system
+    
+    Read the documentation at:
+      https://github.com/rajatjindal/kubectl-modify-secret
+  description: |
+    Usage:
+      kubectl modify-secret secret-name -n kube-system
+
+      This plugin fetches the given secret manifest from the cluster, decodes 
+      the payload, opens an editor to make changes, and applies the modified 
+      manifest when done.
+  homepage: https://github.com/rajatjindal/kubectl-modify-secret
+
