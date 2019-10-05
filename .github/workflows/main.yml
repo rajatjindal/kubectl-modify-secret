@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1 
       - name: Open PR for new release of Krew Plugin
-        uses: rajatjindal/krew-plugin-release@v0.0.12
+        uses: rajatjindal/krew-plugin-release@v0.0.13
         with:
           plugin-name: 'modify-secret'
           upstream-krew-index-owner: 'rajatjin'
