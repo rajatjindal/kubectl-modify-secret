@@ -17,7 +17,7 @@ shasum -a 256 darwin-amd64-$version.tar.gz | awk '{print $1}' > sha256-darwin-am
 cd -
 
 env GOOS=linux   GOARCH=amd64 go build -ldflags "-w -s -X github.com/rajatjindal/kubectl-modify-secret/pkg/cmd.Version=$version" -o _dist/linux-amd64/kubectl-modify-secret       main.go
-cp LICENSE _dist/darwin-amd64/
+cp LICENSE _dist/linux-amd64/
 cd _dist/linux-amd64/  && tar -cvzf linux-amd64-$version.tar.gz kubectl-modify-secret LICENSE
 shasum -a 256 linux-amd64-$version.tar.gz | awk '{print $1}' > sha256-linux-amd64-$version
 
