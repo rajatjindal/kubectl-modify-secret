@@ -9,7 +9,7 @@ spec:
       matchLabels:
         os: darwin
         arch: amd64
-    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/darwin-amd64-{{ .TagName }}.tar.gz" .TagName }}
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-moodify-secret_{{ .TagName }}_darwin_amd64.tar.gz" .TagName }}
     files:
     - from: "*"
       to: "."
@@ -18,7 +18,7 @@ spec:
       matchLabels:
         os: linux
         arch: amd64
-    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/linux-amd64-{{ .TagName }}.tar.gz" .TagName }}
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-modify-secret_{{ .TagName }}_darwin_amd64.tar.gz" .TagName }}
     files:
     - from: "*"
       to: "."

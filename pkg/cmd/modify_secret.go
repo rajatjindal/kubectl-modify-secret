@@ -6,9 +6,10 @@ import (
 	"os"
 
 	"crypto/md5"
-	"github.com/Sirupsen/logrus"
+
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/editor"
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/secrets"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
