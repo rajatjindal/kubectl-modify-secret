@@ -24,7 +24,7 @@ func Edit(file string) error {
 }
 
 func getCommandAndArgs(editorFromEnv, file string) (string, []string) {
-	carray := strings.Split(editorFromEnv, " ")
+	carray := strings.Fields(editorFromEnv)
 	command := carray[0]
 	if len(carray) > 1 {
 		var args = append(carray[1:len(carray)], file)

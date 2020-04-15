@@ -35,6 +35,13 @@ func TestGetCommandAndArgs(t *testing.T) {
 			expectedCommand: "code",
 			expectedArgs:    []string{"--wait", "some-file.txt"},
 		},
+		{
+			name:            "code with arguments and inconsistent spacing",
+			editor:          "code   --wait",
+			file:            "some-file.txt",
+			expectedCommand: "code",
+			expectedArgs:    []string{"--wait", "some-file.txt"},
+		},
 	}
 
 	for _, tc := range testcases {
