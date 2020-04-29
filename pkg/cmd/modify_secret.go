@@ -1,11 +1,10 @@
 package cmd
 
 import (
+	"crypto/md5"
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	"crypto/md5"
 
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/editor"
 	"github.com/rajatjindal/kubectl-modify-secret/pkg/secrets"
@@ -14,6 +13,9 @@ import (
 	"gopkg.in/yaml.v2"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/client-go/kubernetes"
+
+	//import all supported auth
+	_ "k8s.io/client-go/plugin/pkg/client/auth"
 )
 
 //Version is set during build time
