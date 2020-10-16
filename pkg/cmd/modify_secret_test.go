@@ -84,3 +84,29 @@ func TestModifySecrets(t *testing.T) {
 		})
 	}
 }
+
+func TestYamlOrEmpty(t *testing.T) {
+	testcases := []struct {
+		name     string
+		input    map[string]string
+		expected []byte
+	}{
+		{
+			name:     "empty map",
+			input:    map[string]string{},
+			expected: []byte{},
+		}, {
+			name:     "populated map",
+			input:    map[string]string{"foo": "bar"},
+			expected: []byte("foo: bar\n"),
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			output, err := yamlOrEmpty(tc.input)
+			assert.NoError(t, err)
+			assert.Equal(t, tc.expected, output)
+		})
+	}
+}

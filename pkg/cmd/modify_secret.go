@@ -128,7 +128,7 @@ func (o *ModifySecretOptions) Run() error {
 	}
 	defer os.Remove(tempfile.Name())
 
-	yamlData, err := yaml.Marshal(data)
+	yamlData, err := yamlOrEmpty(data)
 	if err != nil {
 		return err
 	}
@@ -178,6 +178,16 @@ func (o *ModifySecretOptions) Run() error {
 	logrus.Infof("secret %q edited", o.secretName)
 
 	return nil
+}
+
+// yamlOrEmpty renders a map to a YAML, with the exception that an empty map
+// becomes an empty byte slice instead of []byte(`{}`)
+func yamlOrEmpty(data map[string]string) ([]byte, error) {
+	if len(data) == 0 {
+		return []byte{}, nil
+	}
+
+	return yaml.Marshal(data)
 }
 
 // getNamespace takes a set of kubectl flag values and returns the namespace we should be operating in
