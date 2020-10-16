@@ -27,7 +27,7 @@ type ModifySecretOptions struct {
 	IOStreams   genericclioptions.IOStreams
 
 	args         []string
-	kubeclient   *kubernetes.Clientset
+	kubeclient   kubernetes.Interface
 	secretName   string
 	namespace    string
 	printVersion bool
