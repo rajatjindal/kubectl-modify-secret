@@ -10,9 +10,12 @@ const defaultEditor = "vi"
 
 //Edit opens the editor
 func Edit(file string) error {
-	editorFromEnv := os.Getenv("EDITOR")
+	editorFromEnv := os.Getenv("KUBE_EDITOR")
 	if editorFromEnv == "" {
-		editorFromEnv = defaultEditor
+		editorFromEnv = os.Getenv("EDITOR")
+		if editorFromEnv == "" {
+			editorFromEnv = defaultEditor
+		}
 	}
 
 	command, args := getCommandAndArgs(editorFromEnv, file)
