@@ -9,14 +9,15 @@ import (
 const defaultEditor = "vi"
 
 func getEditor() string {
-	editorFromEnv := os.Getenv("KUBE_EDITOR")
-	if editorFromEnv == "" {
-		editorFromEnv = os.Getenv("EDITOR")
-		if editorFromEnv == "" {
-			editorFromEnv = defaultEditor
-		}
+	if os.Getenv("KUBE_EDITOR") != "" {
+		return os.Getenv("KUBE_EDITOR")
 	}
-	return editorFromEnv
+
+	if os.Getenv("EDITOR") != "" {
+		return os.Getenv("EDITOR")
+	}
+
+	return defaultEditor
 }
 
 //Edit opens the editor
