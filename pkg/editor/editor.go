@@ -8,14 +8,22 @@ import (
 
 const defaultEditor = "vi"
 
-//Edit opens the editor
-func Edit(file string) error {
-	editorFromEnv := os.Getenv("EDITOR")
-	if editorFromEnv == "" {
-		editorFromEnv = defaultEditor
+func getEditor() string {
+	if os.Getenv("KUBE_EDITOR") != "" {
+		return os.Getenv("KUBE_EDITOR")
 	}
 
-	command, args := getCommandAndArgs(editorFromEnv, file)
+	if os.Getenv("EDITOR") != "" {
+		return os.Getenv("EDITOR")
+	}
+
+	return defaultEditor
+}
+
+//Edit opens the editor
+func Edit(file string) error {
+
+	command, args := getCommandAndArgs(getEditor(), file)
 
 	cmd := exec.Command(command, args...)
 	cmd.Stdin = os.Stdin
