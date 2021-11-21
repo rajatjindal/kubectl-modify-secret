@@ -16,6 +16,15 @@ spec:
     bin: kubectl-modify-secret
   - selector:
       matchLabels:
+        os: darwin
+        arch: arm64
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-modify-secret_{{ .TagName }}_darwin_arm64.tar.gz" .TagName }}
+    files:
+    - from: "*"
+      to: "."
+    bin: kubectl-modify-secret
+  - selector:
+      matchLabels:
         os: linux
         arch: amd64
     {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-modify-secret_{{ .TagName }}_linux_amd64.tar.gz" .TagName }}
