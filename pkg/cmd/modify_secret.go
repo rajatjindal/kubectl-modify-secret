@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"crypto/md5"
 	"fmt"
 	"io/ioutil"
@@ -112,7 +113,7 @@ func (o *ModifySecretOptions) Validate() error {
 
 // Run fetches the given secret manifest from the cluster, decodes the payload, opens an editor to make changes, and applies the modified manifest when done
 func (o *ModifySecretOptions) Run() error {
-	secret, err := secrets.Get(o.kubeclient, o.secretName, o.namespace)
+	secret, err := secrets.Get(context.TODO(), o.kubeclient, o.secretName, o.namespace)
 	if err != nil {
 		return err
 	}
@@ -170,7 +171,7 @@ func (o *ModifySecretOptions) Run() error {
 
 	secret.Data = updateByteData
 
-	_, err = secrets.Update(o.kubeclient, secret)
+	_, err = secrets.Update(context.TODO(), o.kubeclient, secret)
 	if err != nil {
 		return err
 	}
