@@ -32,6 +32,24 @@ spec:
     - from: "*"
       to: "."
     bin: kubectl-modify-secret
+  - selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-modify-secret_{{ .TagName }}_linux_arm64.tar.gz" .TagName }}
+    files:
+    - from: "*"
+      to: "."
+    bin: kubectl-modify-secret
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    {{addURIAndSha "https://github.com/rajatjindal/kubectl-modify-secret/releases/download/{{ .TagName }}/kubectl-modify-secret_{{ .TagName }}_windows_amd64.tar.gz" .TagName }}
+    files:
+    - from: "*"
+      to: "."
+    bin: kubectl-modify-secret.exe
   shortDescription: modify secret with implicit base64 translations
   description: |
     Usage:

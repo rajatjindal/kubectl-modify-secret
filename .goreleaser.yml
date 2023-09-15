@@ -4,9 +4,12 @@ builds:
   binary: kubectl-modify-secret
   env:
   - CGO_ENABLED=0
+  ldflags:
+  - "-s -w -X github.com/rajatjindal/kubectl-modify-secret/pkg/cmd.Version={{.Version}}"
   goos:
   - darwin
   - linux
+  - windows
   goarch:
   - amd64
   - arm64
