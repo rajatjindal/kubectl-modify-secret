@@ -13,7 +13,7 @@ spec:
     files:
     - from: "*"
       to: "."
-    bin: kubectl-modify-secret
+    bin: kubectl-modify_secret
   - selector:
       matchLabels:
         os: darwin
@@ -22,7 +22,7 @@ spec:
     files:
     - from: "*"
       to: "."
-    bin: kubectl-modify-secret
+    bin: kubectl-modify_secret
   - selector:
       matchLabels:
         os: linux
@@ -31,7 +31,7 @@ spec:
     files:
     - from: "*"
       to: "."
-    bin: kubectl-modify-secret
+    bin: kubectl-modify_secret
   - selector:
       matchLabels:
         os: linux
@@ -40,7 +40,7 @@ spec:
     files:
     - from: "*"
       to: "."
-    bin: kubectl-modify-secret
+    bin: kubectl-modify_secret
   - selector:
       matchLabels:
         os: windows
@@ -49,7 +49,7 @@ spec:
     files:
     - from: "*"
       to: "."
-    bin: kubectl-modify-secret.exe
+    bin: kubectl-modify_secret.exe
   shortDescription: modify secret with implicit base64 translations
   description: |
     Usage:
