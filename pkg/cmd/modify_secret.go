@@ -19,10 +19,10 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 )
 
-//Version is set during build time
+// Version is set during build time
 var Version = "unknown"
 
-//ModifySecretOptions is struct for modify secret
+// ModifySecretOptions is struct for modify secret
 type ModifySecretOptions struct {
 	configFlags *genericclioptions.ConfigFlags
 	IOStreams   genericclioptions.IOStreams
@@ -123,7 +123,7 @@ func (o *ModifySecretOptions) Run() error {
 		data[k] = string(v)
 	}
 
-	tempfile, err := ioutil.TempFile("", fmt.Sprintf("%s-%s-", o.namespace, o.secretName))
+	tempfile, err := os.CreateTemp("", fmt.Sprintf("%s-%s-*.yaml", o.namespace, o.secretName))
 	if err != nil {
 		return err
 	}
@@ -134,7 +134,7 @@ func (o *ModifySecretOptions) Run() error {
 		return err
 	}
 
-	err = ioutil.WriteFile(tempfile.Name(), yamlData, 0644)
+	err = os.WriteFile(tempfile.Name(), yamlData, 0644)
 	if err != nil {
 		return err
 	}
