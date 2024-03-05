@@ -6,10 +6,13 @@ This plugin pulls the secret from Kubernetes, and open the configured editor wit
 
 ![using kubectl-modify-secret plugin](demo/usage.gif)
 
-# Installing
+# Installing via krew
 - install `krew` using instructions [here](https://github.com/kubernetes-sigs/krew#installation)
 - run `kubectl krew update`
 - run `kubectl krew install modify-secret`
+
+# Install via brew
+- run `brew install rajatjindal/tap/modify-secret`
 
 ![installing kubectl-modify-secret plugin](demo/installation.gif)
 
