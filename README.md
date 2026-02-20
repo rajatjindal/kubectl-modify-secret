@@ -6,6 +6,10 @@ This plugin pulls the secret from Kubernetes, and open the configured editor wit
 
 ![using kubectl-modify-secret plugin](demo/usage.gif)
 
+# Installing via Go
+- run `go install github.com/rajatjindal/kubectl-modify-secret@latest`
+- Installs kubectl-modify-secret into $HOME/go/bin.
+
 # Installing via krew
 - install `krew` using instructions [here](https://github.com/kubernetes-sigs/krew#installation)
 - run `kubectl krew update`
