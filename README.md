@@ -16,6 +16,11 @@ This plugin pulls the secret from Kubernetes, and open the configured editor wit
 
 ![installing kubectl-modify-secret plugin](demo/installation.gif)
 
+# Install via [mise](https://mise.jdx.dev/)
+
+```
+mise use -g github:rajatjindal/kubectl-modify-secret
+```
 
 # Usage
 
